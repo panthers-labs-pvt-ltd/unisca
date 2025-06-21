@@ -1,8 +1,8 @@
-package com.progressive.minds.chimera.unisca.kvstore;
+package org.panthers.labs.chimera.unisca.kvstore;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-import com.progressive.minds.chimera.unisca.kvstore.DataType.CustomType1;
+import org.panthers.labs.chimera.unisca.kvstore.DataType.CustomType1;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

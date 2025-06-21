@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.secrets;
+package org.panthers.labs.chimera.unisca.secrets;
 
 /*
 |-Org

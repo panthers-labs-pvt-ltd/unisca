@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.logging;
+package org.panthers.labs.chimera.unisca.logging;
 
 import org.apache.logging.log4j.Level;
 

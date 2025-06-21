@@ -1,11 +1,11 @@
-package com.progressive.minds.chimera.unisca.kvstore;
+package org.panthers.labs.chimera.unisca.kvstore;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.progressive.minds.chimera.unisca.tags.annotation.Private;
+import org.panthers.labs.chimera.unisca.tags.annotation.Private;
 
 /**
  * Tags a field to be indexed when storing an object.

@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.kvstore;
+package org.panthers.labs.chimera.unisca.kvstore;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

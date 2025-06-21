@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.kvstore;
+package org.panthers.labs.chimera.unisca.kvstore;
 
 import java.io.File;
 import java.lang.ref.Reference;
@@ -13,10 +13,10 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import com.google.common.collect.ImmutableSet;
-import com.progressive.minds.chimera.unisca.kvstore.DataType.ArrayKeyIndexType;
-import com.progressive.minds.chimera.unisca.kvstore.DataType.CustomType1;
-import com.progressive.minds.chimera.unisca.kvstore.DataType.CustomType2;
-import com.progressive.minds.chimera.unisca.kvstore.DataType.IntKeyType;
+import org.panthers.labs.chimera.unisca.kvstore.DataType.ArrayKeyIndexType;
+import org.panthers.labs.chimera.unisca.kvstore.DataType.CustomType1;
+import org.panthers.labs.chimera.unisca.kvstore.DataType.CustomType2;
+import org.panthers.labs.chimera.unisca.kvstore.DataType.IntKeyType;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

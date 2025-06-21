@@ -1,6 +1,6 @@
-package com.progressive.minds.chimera.unisca.kvstore.DataType;
+package org.panthers.labs.chimera.unisca.kvstore.DataType;
 
-import com.progressive.minds.chimera.unisca.kvstore.KVIndex;
+import org.panthers.labs.chimera.unisca.kvstore.KVIndex;
 
 public class CustomType1 {
 

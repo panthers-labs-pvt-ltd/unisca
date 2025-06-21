@@ -1,11 +1,11 @@
-package com.progressive.minds.chimera.unisca.exception;
+package org.panthers.labs.chimera.unisca.exception;
 
 import com.fasterxml.jackson.core.util.MinimalPrettyPrinter;
 
 import java.io.IOException;
 import java.util.*;
 
-import static com.progressive.minds.chimera.unisca.chimeraUtils.ChimeraUtils.*;
+import static org.panthers.labs.chimera.unisca.chimeraUtils.ChimeraUtils.*;
 
 
 import com.fasterxml.jackson.core.JsonGenerator;

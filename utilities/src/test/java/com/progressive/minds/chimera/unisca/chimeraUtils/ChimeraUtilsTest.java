@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.chimeraUtils;
+package org.panthers.labs.chimera.unisca.chimeraUtils;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.kvstore;
+package org.panthers.labs.chimera.unisca.kvstore;
 
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -11,8 +11,8 @@ import java.util.Random;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-import com.progressive.minds.chimera.unisca.kvstore.DataType.CustomType1;
-import com.progressive.minds.chimera.unisca.kvstore.DataType.IntKeyType;
+import org.panthers.labs.chimera.unisca.kvstore.DataType.CustomType1;
+import org.panthers.labs.chimera.unisca.kvstore.DataType.IntKeyType;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;

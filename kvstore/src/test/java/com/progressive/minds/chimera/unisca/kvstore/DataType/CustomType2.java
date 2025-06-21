@@ -1,7 +1,7 @@
-package com.progressive.minds.chimera.unisca.kvstore.DataType;
+package org.panthers.labs.chimera.unisca.kvstore.DataType;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.progressive.minds.chimera.unisca.kvstore.KVIndex;
+import org.panthers.labs.chimera.unisca.kvstore.KVIndex;
 
 //@JsonIgnoreProperties(ignoreUnknown = true)
 public class CustomType2 {

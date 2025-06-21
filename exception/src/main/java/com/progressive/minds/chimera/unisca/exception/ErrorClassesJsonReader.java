@@ -1,10 +1,10 @@
-package com.progressive.minds.chimera.unisca.exception;
+package org.panthers.labs.chimera.unisca.exception;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.module.scala.DefaultScalaModule;
-import com.progressive.minds.chimera.unisca.logging.ChimeraLogger;
-import com.progressive.minds.chimera.unisca.logging.ChimeraLoggerFactory;
+import org.panthers.labs.chimera.unisca.logging.ChimeraLogger;
+import org.panthers.labs.chimera.unisca.logging.ChimeraLoggerFactory;
 import org.apache.commons.text.StringSubstitutor;
 
 

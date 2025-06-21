@@ -1,7 +1,7 @@
-package com.progressive.minds.chimera.unisca.logging;
+package org.panthers.labs.chimera.unisca.logging;
 
 import com.google.common.base.Preconditions;
-import com.progressive.minds.chimera.unisca.tags.annotation.Private;
+import org.panthers.labs.chimera.unisca.tags.annotation.Private;
 
 import java.util.HashMap; /**
  * Wrapper class for log messages that include a logging context.

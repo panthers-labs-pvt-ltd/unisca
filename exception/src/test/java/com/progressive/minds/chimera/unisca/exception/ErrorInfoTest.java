@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.exception;
+package org.panthers.labs.chimera.unisca.exception;
 
 import org.junit.jupiter.api.Test;
 import java.util.List;

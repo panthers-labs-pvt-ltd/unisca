@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.tags.annotation;
+package org.panthers.labs.chimera.unisca.tags.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

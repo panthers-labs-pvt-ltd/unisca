@@ -1,7 +1,7 @@
-package com.progressive.minds.chimera.unisca.logging;
+package org.panthers.labs.chimera.unisca.logging;
 
-import com.progressive.minds.chimera.unisca.tags.annotation.Private;
-import com.progressive.minds.chimera.unisca.logging.LogKey.LogKey;
+import org.panthers.labs.chimera.unisca.tags.annotation.Private;
+import org.panthers.labs.chimera.unisca.logging.LogKey.LogKey;
 
 /**
  * Represents a key-value pair of LogKey and Object that can be used to get MDC (Mapped Diagnostic Context).

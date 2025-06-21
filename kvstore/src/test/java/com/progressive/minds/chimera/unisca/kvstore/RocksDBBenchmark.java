@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.kvstore;
+package org.panthers.labs.chimera.unisca.kvstore;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
-package com.progressive.minds.chimera.unisca.kvstore;
+package org.panthers.labs.chimera.unisca.kvstore;
 
 import com.google.common.base.Preconditions;
-import com.progressive.minds.chimera.unisca.tags.annotation.Private;
+import org.panthers.labs.chimera.unisca.tags.annotation.Private;
 
 
 import java.lang.reflect.Field;

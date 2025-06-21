@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.logging.utils;
+package org.panthers.labs.chimera.unisca.logging.utils;
 
 public class LogUtil {
 

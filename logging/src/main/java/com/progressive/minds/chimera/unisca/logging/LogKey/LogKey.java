@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.logging.LogKey;
+package org.panthers.labs.chimera.unisca.logging.LogKey;
 
 import java.util.Locale;
 

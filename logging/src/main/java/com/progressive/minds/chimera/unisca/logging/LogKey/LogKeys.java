@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.logging.LogKey;
+package org.panthers.labs.chimera.unisca.logging.LogKey;
 
 public class LogKeys {
     public static final LogKey EXECUTOR_ID = new LogKey() {};

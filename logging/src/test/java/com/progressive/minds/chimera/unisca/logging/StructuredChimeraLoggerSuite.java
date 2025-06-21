@@ -1,4 +1,4 @@
-package com.progressive.minds.chimera.unisca.logging;
+package org.panthers.labs.chimera.unisca.logging;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

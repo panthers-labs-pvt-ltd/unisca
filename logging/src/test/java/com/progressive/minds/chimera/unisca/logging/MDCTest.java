@@ -1,7 +1,7 @@
-package com.progressive.minds.chimera.unisca.logging;
+package org.panthers.labs.chimera.unisca.logging;
 
-import com.progressive.minds.chimera.unisca.logging.LogKey.LogKey;
-import com.progressive.minds.chimera.unisca.logging.LogKey.LogKeys;
+import org.panthers.labs.chimera.unisca.logging.LogKey.LogKey;
+import org.panthers.labs.chimera.unisca.logging.LogKey.LogKeys;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
