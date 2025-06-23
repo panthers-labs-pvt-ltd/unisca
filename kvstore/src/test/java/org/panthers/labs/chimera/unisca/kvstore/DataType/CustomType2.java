@@ -1,6 +1,5 @@
 package org.panthers.labs.chimera.unisca.kvstore.DataType;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.panthers.labs.chimera.unisca.kvstore.KVIndex;
 
 //@JsonIgnoreProperties(ignoreUnknown = true)
