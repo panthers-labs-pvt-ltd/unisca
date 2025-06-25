@@ -10,6 +10,19 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:panthers-labs-pvt-ltd/unisca.git</connection>
+        <developerConnection>scm:git:ssh://github.com:panthers-labs-pvt-ltd/unisca.git</developerConnection>
+        <url>https://github.com/panthers-labs-pvt-ltd/unisca.git</url>
+    </scm>
+
     <developers>
         <developer>
             <id>0001</id>
@@ -138,29 +151,6 @@
         <flyway-maven-plugin-version>11.3.2</flyway-maven-plugin-version>
         <flyway-database-postgresql-version>11.3.2</flyway-database-postgresql-version>
     </properties>
-    <!--<repositories><repository><id>gitlab-maven</id><url>https://gitlab.com/manishkumargupta/TestScala.git</url></repository></repositories><distributionManagement><repository><id>gitlab-maven</id><url>https://gitlab.com/manishkumargupta/TestScala.git</url></repository><snapshotRepository><id>gitlab-maven</id><url>https://gitlab.com/manishkumargupta/TestScala.git</url></snapshotRepository></distributionManagement>-->
-    <repositories>
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/panthers-labs-pvt-ltd/progressive.mind.framework</url>
-        </repository>
-    </repositories>
-
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages Release Repository</name>
-            <url>https://maven.pkg.github.com/panthers-labs-pvt-ltd/progressive.mind.framework</url>
-        </repository>
-
-        <snapshotRepository>
-            <id>github</id>
-            <name>GitHub Packages Snapshot Repository</name>
-            <url>https://maven.pkg.github.com/panthers-labs-pvt-ltd/progressive.mind.framework</url>
-        </snapshotRepository>
-    </distributionManagement>
 
 
     <dependencyManagement>
@@ -604,6 +594,15 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.8.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
             </plugin>
         </plugins>
     </build>
