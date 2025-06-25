@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.panthers.labs.chimera</groupId>
+        <groupId>org.pantherslabs.chimera</groupId>
         <artifactId>unisca</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -14,13 +14,13 @@
     <artifactId>unisca.logging</artifactId>
     <dependencies>
 <!--        <dependency>
-            <groupId>org.panthers.labs.chimera</groupId>
+            <groupId>org.pantherslabs.chimera</groupId>
             <artifactId>unisca</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>-->
         <dependency>
-            <groupId>org.panthers.labs.chimera</groupId>
+            <groupId>org.pantherslabs.chimera</groupId>
             <artifactId>unisca.tags</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>

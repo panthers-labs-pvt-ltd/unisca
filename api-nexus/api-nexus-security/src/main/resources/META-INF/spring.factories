@@ -1,2 +1,2 @@
 org.springframework.boot.env.EnvironmentPostProcessor=\
-org.panthers.labs.chimera.keyclock.KeycloakDefaultProperties
+org.pantherslabs.chimera.keyclock.KeycloakDefaultProperties

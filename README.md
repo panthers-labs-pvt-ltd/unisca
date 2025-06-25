@@ -37,7 +37,7 @@ To use `unisca` in your Maven-based module:
 
 ```xml
 <dependency>
-  <groupId>org.panthers.labs.chimera</groupId>
+  <groupId>org.pantherslabs.chimera</groupId>
   <artifactId>unisca</artifactId>
   <version>1.0.0</version>
 </dependency>

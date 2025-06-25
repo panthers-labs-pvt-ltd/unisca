@@ -19,7 +19,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="org.panthers.labs.chimera" level="info" additivity="false">
+        <Logger name="org.pantherslabs.chimera" level="info" additivity="false">
             <AppenderRef ref="File" />
         </Logger>
         <Root level="error">

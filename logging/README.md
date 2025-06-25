@@ -1,11 +1,11 @@
 # Guidelines for the Structured Logging Framework - Java Logging
 
-Use the ```org.panthers.labs.chimera.foundational.logging.ChimeraLoggerFactory``` to get the logger instance in Java code:
+Use the ```org.pantherslabs.chimera.foundational.logging.ChimeraLoggerFactory``` to get the logger instance in Java code:
 
-* Getting Logger Instance: Instead of using `org.slf4j.LoggerFactory`, use `org.panthers.labs.chimera.foundational.logging.ChimeraLoggerFactory` to ensure structured logging.
+* Getting Logger Instance: Instead of using `org.slf4j.LoggerFactory`, use `org.pantherslabs.chimera.foundational.logging.ChimeraLoggerFactory` to ensure structured logging.
 
 ```java
-import org.panthers.labs.chimera.unisca.logging.ChimeraLoggerFactory;
+import org.pantherslabs.chimera.unisca.logging.ChimeraLoggerFactory;
 
 private static final ChimeraLogger LOGGER = ChimeraLoggerFactory.getLogger();
 ```
@@ -13,9 +13,9 @@ private static final ChimeraLogger LOGGER = ChimeraLoggerFactory.getLogger();
 * Logging Messages with Variables: When logging messages with variables, wrap all the variables with `MDC`s and they will be automatically added to the Mapped Diagnostic Context (MDC). This allows for structured logging and better log analysis.
 
 ```java
-import org.panthers.labs.chimera.unisca.logging.LogKey.LogKeys;
-import org.panthers.labs.chimera.unisca.logging.MDC;
-import org.panthers.labs.chimera.unisca.logging.ChimeraLoggerFactory;
+import org.pantherslabs.chimera.unisca.logging.LogKey.LogKeys;
+import org.pantherslabs.chimera.unisca.logging.MDC;
+import org.pantherslabs.chimera.unisca.logging.ChimeraLoggerFactory;
 
 private static final ChimeraLogger logger = ChimeraLoggerFactory.getLogger();
 logger.
@@ -26,7 +26,7 @@ logError("Unable to delete file for partition {}",MDC.of(LogKeys.PARTITION_ID, i
 * Constant String Messages: For logging constant string messages, use the standard logging methods.
 
 ```java
-import org.panthers.labs.chimera.unisca.logging.ChimeraLoggerFactory;
+import org.pantherslabs.chimera.unisca.logging.ChimeraLoggerFactory;
 
 private static final ChimeraLogger logger = ChimeraLoggerFactory.getLogger();
 logger.
