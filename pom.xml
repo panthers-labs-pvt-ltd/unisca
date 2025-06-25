@@ -47,6 +47,7 @@
         <module>logging</module>
         <module>kvstore</module>
         <module>tags</module>
+        <module>api-nexus</module>
     </modules>
 
 
