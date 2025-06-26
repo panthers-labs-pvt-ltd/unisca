@@ -44,4 +44,4 @@ jobs:
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
           run : mvn versions:set -DnewVersion=2.0.0
-        run: mvn clean deploy -P release -DskipTests --batch-modeSetting Up Github Secrets        
+        run: mvn clean deploy -P release -DskipTests --batch-mode  
