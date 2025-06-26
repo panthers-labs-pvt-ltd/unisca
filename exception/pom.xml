@@ -7,11 +7,14 @@
     <parent>
         <groupId>org.pantherslabs.chimera</groupId>
         <artifactId>unisca</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
+    <name>exception</name>
+    <description>The exception-handling module provides centralized exception management for the application. It defines custom exception classes, global exception handlers, and utility functions to handle and format exceptions in a consistent and maintainable way across all modules.</description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/exception</url>
     <artifactId>unisca.exception</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <dependencies>
         <dependency>

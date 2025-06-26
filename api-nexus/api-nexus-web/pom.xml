@@ -6,10 +6,17 @@
     <parent>
         <groupId>org.pantherslabs.chimera</groupId>
         <artifactId>api-nexus</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>api-nexus-web</artifactId>
+    <name>API Nexus Web Module</name>
+    <description>
+        Provides web-related functionalities for the Nexus Repository Manager.
+        Facilitates the integration of web interfaces, RESTful APIs, and web services,
+        enabling seamless interaction with the Nexus platform through web protocols.
+    </description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/api-nexus/api-nexus-web</url>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

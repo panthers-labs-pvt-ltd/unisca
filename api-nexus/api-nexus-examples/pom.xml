@@ -6,10 +6,13 @@
     <parent>
         <groupId>org.pantherslabs.chimera</groupId>
         <artifactId>api-nexus</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>api-nexus-examples</artifactId>
+    <name>API Nexus Example Module</name>
+    <description>API Example Modules, to Show how API can be Used /Integrated    </description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/api-nexus/api-nexus-example</url>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

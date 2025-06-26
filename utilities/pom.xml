@@ -6,11 +6,19 @@
     <parent>
         <groupId>org.pantherslabs.chimera</groupId>
         <artifactId>unisca</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
+    <name>Utilities Module</name>
+    <description>
+        General-purpose utility library offering reusable helpers:
+        string manipulation, date/time formatting, file I/O,
+        reflection utilities, and validation helpers.
+        Designed for modular reuse across the entire codebase.
+    </description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/utilities</url>
     <artifactId>unisca.utilities</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <properties>
         <project.version>1.0-SNAPSHOT</project.version>

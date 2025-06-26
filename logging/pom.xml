@@ -7,10 +7,17 @@
     <parent>
         <groupId>org.pantherslabs.chimera</groupId>
         <artifactId>unisca</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
-
+    <name>Logging Core Module</name>
+    <description>
+        A core logging module that provides structured logging support,
+        integrates SLF4J facade with a configurable backend (e.g., Log4j2).
+        Includes utilities for log formatting, context data (MDC), and
+        centralized configuration.
+    </description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/logging</url>
     <artifactId>unisca.logging</artifactId>
     <dependencies>
 <!--        <dependency>
@@ -22,7 +29,7 @@
         <dependency>
             <groupId>org.pantherslabs.chimera</groupId>
             <artifactId>unisca.tags</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

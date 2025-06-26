@@ -6,11 +6,20 @@
     <parent>
         <groupId>org.pantherslabs.chimera</groupId>
         <artifactId>unisca</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
+
+    <name>Tag Module</name>
+    <description>
+        A utility module for managing tags – supports creating, updating,
+        and validating tags for artifacts or source control (e.g., Git).
+        Features include semantic version tagging, tag conventions enforcement,
+        and integration with CI/CD pipelines.
+    </description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/tags</url>
     <artifactId>unisca.tags</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

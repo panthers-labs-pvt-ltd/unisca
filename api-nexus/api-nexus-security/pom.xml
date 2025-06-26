@@ -6,10 +6,18 @@
     <parent>
         <groupId>org.pantherslabs.chimera</groupId>
         <artifactId>api-nexus</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>api-nexus-security</artifactId>
+    <name>API Nexus Security Module</name>
+    <description>
+        Integrates Keycloak for authentication and authorization within Nexus Repository Manager.
+        Supports SAML and OpenID Connect (OIDC) protocols for secure user access.
+        Facilitates role-based access control (RBAC) by mapping Keycloak roles to Nexus roles.
+        Enhances security by enforcing centralized identity management.
+    </description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/api-nexus/api-nexus-security</url>
 
     <dependencies>
         <dependency>
