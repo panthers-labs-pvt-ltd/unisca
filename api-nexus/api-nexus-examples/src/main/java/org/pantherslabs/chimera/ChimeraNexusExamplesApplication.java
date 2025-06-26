@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.progressive.minds.chimera.examples")
-@MapperScan("com.progressive.minds.chimera.examples.mapper.generated")
+@ComponentScan(basePackages = ".pantherslabs.chimera.examples")
+@MapperScan(".pantherslabs.chimera.examples.mapper.generated")
 public class ChimeraNexusExamplesApplication {
   public static void main(String[] args) {
     SpringApplication.run(ChimeraNexusExamplesApplication.class, args);
