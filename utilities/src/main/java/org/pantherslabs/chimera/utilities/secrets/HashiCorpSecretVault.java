@@ -1,4 +1,4 @@
-package org.pantherslabs.chimera.unisca.secrets;
+package org.pantherslabs.chimera.utilities.secrets;
 
 /*
 |-Org

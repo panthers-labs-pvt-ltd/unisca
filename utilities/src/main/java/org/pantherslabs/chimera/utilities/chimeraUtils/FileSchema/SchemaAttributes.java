@@ -1,4 +1,4 @@
-package org.pantherslabs.chimera.unisca.chimeraUtils.FileSchema;
+package org.pantherslabs.chimera.utilities.chimeraUtils.FileSchema;
 
 public class SchemaAttributes {
     private String name;

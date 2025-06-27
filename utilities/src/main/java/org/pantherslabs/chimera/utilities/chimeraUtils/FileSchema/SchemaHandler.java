@@ -1,4 +1,4 @@
-package org.pantherslabs.chimera.unisca.chimeraUtils.FileSchema;
+package org.pantherslabs.chimera.utilities.chimeraUtils.FileSchema;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
