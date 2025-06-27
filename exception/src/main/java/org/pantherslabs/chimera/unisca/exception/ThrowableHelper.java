@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.util.MinimalPrettyPrinter;
 import java.io.IOException;
 import java.util.*;
 
-import static org.pantherslabs.chimera.utilities.chimeraUtils.ChimeraUtils.*;
+import static org.pantherslabs.chimera.utilities.ChimeraUtils.*;
 import com.fasterxml.jackson.core.JsonGenerator;
 public class ThrowableHelper {
 

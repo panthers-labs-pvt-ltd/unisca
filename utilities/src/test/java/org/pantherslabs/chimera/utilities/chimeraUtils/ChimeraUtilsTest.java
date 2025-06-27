@@ -2,6 +2,7 @@ package org.pantherslabs.chimera.utilities.chimeraUtils;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import org.junit.jupiter.api.Test;
+import org.pantherslabs.chimera.utilities.ChimeraUtils;
 
 import java.io.IOException;
 
