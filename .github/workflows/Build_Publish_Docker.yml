@@ -63,8 +63,7 @@ jobs:
         run: |
           # Find all .jar files excluding original ones
           [ -d "jars-to-upload" ] && rm -rf "jars-to-upload"
-          #for jar in $(find . -name "*.jar" -not -path "*/target/original-*.jar"); do
-          for jar in $(find . -name "*.jar" ! -name "*javadoc*.jar" -not -path "*/target/original-*.jar"); do
+          for jar in $(find . -name "*.jar" ! -name "*javadoc*.jar" ! -name "*sources*.jar" -not -path "*/target/original-*.jar"); do
             module_dir=$(dirname "$jar")
             module_dir="${module_dir%/target}"
             #module_name=$(basename "$(dirname "$jar")")
