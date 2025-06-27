@@ -1,4 +1,4 @@
-name: Sentinel Build & Deploy to Maven Central
+name: Unisca Docker
 
 on:
   workflow_dispatch:

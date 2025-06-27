@@ -1,4 +1,4 @@
-package org.pantherslabs.chimera.utilities.FileSchema;
+package org.pantherslabs.chimera.unisca.utilities.FileSchema;
 
 import com.univocity.parsers.conversions.Conversions;
 import org.apache.spark.api.java.JavaRDD;

@@ -1,4 +1,4 @@
-package org.pantherslabs.chimera.utilities.FileSchema;
+package org.pantherslabs.chimera.unisca.utilities.FileSchema;
 
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.types.StructField;

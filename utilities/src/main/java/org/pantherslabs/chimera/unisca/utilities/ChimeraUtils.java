@@ -1,4 +1,4 @@
-package org.pantherslabs.chimera.utilities;
+package org.pantherslabs.chimera.unisca.utilities;
 
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonGenerator;

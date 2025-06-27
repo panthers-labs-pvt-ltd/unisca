@@ -1,12 +1,11 @@
 package org.pantherslabs.chimera.unisca.exception;
-import com.fasterxml.jackson.core.util.MinimalPrettyPrinter;
 import java.io.IOException;
 import java.util.*;
 import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.util.MinimalPrettyPrinter;
 
-import static org.pantherslabs.chimera.utilities.ChimeraUtils.getSparkClassLoader;
-import static org.pantherslabs.chimera.utilities.ChimeraUtils.toJsonString;
-
+import static org.pantherslabs.chimera.unisca.utilities.ChimeraUtils.getSparkClassLoader;
+import static org.pantherslabs.chimera.unisca.utilities.ChimeraUtils.toJsonString;
 
 public class ThrowableHelper {
 

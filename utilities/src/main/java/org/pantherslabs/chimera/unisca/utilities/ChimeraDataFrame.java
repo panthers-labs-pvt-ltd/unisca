@@ -1,4 +1,4 @@
-package org.pantherslabs.chimera.utilities;
+package org.pantherslabs.chimera.unisca.utilities;
 
 public interface ChimeraDataFrame {
     // This method is not implemented yet.
