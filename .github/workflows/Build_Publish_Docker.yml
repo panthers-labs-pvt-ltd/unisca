@@ -1,0 +1,112 @@
+name: Sentinel Build & Deploy to Maven Central
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish'
+        required: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 - Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref_name }}  # Dynamically use branch name
+
+      - name: Set Current Version
+        id: extract_version
+        run: |
+          pom_version=$(grep -m 1 '<version>' pom.xml | sed -E 's/.*<version>(.+)<\/version>.*/\1/')
+          tag="${GITHUB_REF##refs/tags/}"
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            version="$tag"
+          else
+            version="$pom_version"
+          fi
+          echo "Current Version: $version"
+          echo "version=${version,,}" >> "$GITHUB_OUTPUT"
+
+      - name: Step 2 - Import GPG Key
+        run: |
+          echo "${{ secrets.GPG_PUBLIC_KEY }}" | gpg --import
+          echo "${{ secrets.GPG_SECRET_KEY }}" | gpg --import --no-tty --batch --yes
+        env:
+          GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
+          GPG_SECRET_KEY: ${{ secrets.GPG_SECRET_KEY }}
+
+      - name: Step 3 - Set up Maven Central Repository
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          server-id: central
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+          gpg-private-key: ${{ secrets.GPG_SECRET_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+
+      - name: Step 3 - Set New Version
+        run: mvn versions:set -DnewVersion=${{ steps.extract_version.outputs.version }}
+
+      - name: Step 4 - Publish Package to Maven Central
+        env:
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: mvn clean deploy -P release -DskipTests --batch-mode  
+
+      - name: Step 5 - Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Step 6 Build and push Docker images for each JAR
+        run: |
+          # Find all .jar files excluding original ones
+          [ -d "jars-to-upload" ] && rm -rf "jars-to-upload"
+          for jar in $(find . -name "*.jar" -not -path "*/target/original-*.jar"); do
+            module_dir=$(dirname "$jar")
+            module_dir="${module_dir%/target}"
+            module_name=$(basename "$module_dir")
+            
+            # Extract the version from the module's pom.xml
+            version=$(grep -oP '(?<=<version>)[^<]+' "$module_dir/pom.xml" | head -n 1)
+            
+            # Ensure module_name is lowercase and replace spaces with underscores
+            formatted_module_name=$(echo "$module_name" | tr '[:space:]' '_'| sed 's/__/_/g'| sed 's/_$//')
+            
+            # Construct the image name with version and convert everything to lowercase
+            image_name="ghcr.io/${{ github.repository_owner }}/${formatted_module_name}:${version}"
+            image_name_lowercase=$(echo "$image_name" | tr '[:upper:]' '[:lower:]')
+
+            echo "Processing $jar in module $module_name, version $version"
+
+            # Use a Dockerfile in each module, or copy a template if not present
+            if [ ! -f "$module_dir/Dockerfile" ]; then
+              echo "No Dockerfile found in $module_dir, creating a simple Dockerfile"
+              echo "FROM eclipse-temurin:17-jre" > $module_dir/Dockerfile
+              echo "COPY $(basename $jar) /app.jar" >> $module_dir/Dockerfile
+              echo 'ENTRYPOINT ["java", "-jar", "/app.jar"]' >> $module_dir/Dockerfile
+            fi
+
+            # Ensure the JAR file is copied to the module directory (if not already)
+            dest_jar="$module_dir/$(basename $jar)"
+            if [ "$jar" != "$dest_jar" ]; then
+              cp "$jar" "$dest_jar"
+            else
+              echo "File $jar is already in the destination directory, skipping copy."
+            fi
+            jar_basename=$(basename "$jar")
+            jar_path="$module_dir/$jar_basename"
+            
+            if [ -f "$jar_path" ]; then
+              echo "Found JAR: $jar_path. Building Docker image..."
+              docker build -t "$image_name_lowercase" "$module_dir"
+              docker push "$image_name_lowercase"
+            else
+              echo "JAR not found at $jar_path. Skipping Docker build."
+            fi
+          
+          done
+		  
