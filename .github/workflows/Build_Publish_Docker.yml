@@ -59,38 +59,52 @@ jobs:
       - name: Step 7 - Log in to Docker Hub
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
-      - name: Step 8 - Build and Push Docker Images
+      - name: Step 7 Build and push Docker images for each JAR
         run: |
-          set -euo pipefail
-          version="${{ steps.extract_version.outputs.version }}"
-
+          # Find all .jar files excluding original ones
+          [ -d "jars-to-upload" ] && rm -rf "jars-to-upload"
           for jar in $(find . -name "*.jar" -not -path "*/target/original-*.jar"); do
             module_dir=$(dirname "$jar")
             module_dir="${module_dir%/target}"
+            #module_name=$(basename "$(dirname "$jar")")
             module_name=$(basename "$module_dir")
+            
+            # Extract the version from the module's pom.xml
+            version=$(grep -oP '(?<=<version>)[^<]+' "$module_dir/pom.xml" | head -n 1)
+            
+            # Ensure module_name is lowercase and replace spaces with underscores
+            formatted_module_name=$(echo "$module_name" | tr '[:space:]' '_'| sed 's/__/_/g'| sed 's/_$//')
+            
+            # Construct the image name with version and convert everything to lowercase
+            image_name="ghcr.io/${{ github.repository_owner }}/${formatted_module_name}:${version}"
+            image_name_lowercase=$(echo "$image_name" | tr '[:upper:]' '[:lower:]')
 
-            formatted_module_name=$(echo "$module_name" | tr '[:upper:]' '[:lower:]' | tr -s '[:space:]' '_' | sed 's/__/_/g' | sed 's/_$//')
-            image_name="pantherslabspvtltd/${formatted_module_name}:${version}"
+            echo "Processing $jar in module $module_name, version $version"
 
-            echo "Processing $jar -> $image_name"
-
-            # Ensure Dockerfile exists
+            # Use a Dockerfile in each module, or copy a template if not present
             if [ ! -f "$module_dir/Dockerfile" ]; then
-              echo "Creating Dockerfile in $module_dir"
-              cat <<EOF > "$module_dir/Dockerfile"
-              FROM eclipse-temurin:17-jre
-              COPY $(basename "$jar") /app.jar
-              ENTRYPOINT ["java", "-jar", "/app.jar"]
-              EOF
+              echo "No Dockerfile found in $module_dir, creating a simple Dockerfile"
+              echo "FROM eclipse-temurin:17-jre" > $module_dir/Dockerfile
+              echo "COPY $(basename $jar) /app.jar" >> $module_dir/Dockerfile
+              echo 'ENTRYPOINT ["java", "-jar", "/app.jar"]' >> $module_dir/Dockerfile
             fi
 
-            # Ensure the JAR is in the right location
-            dest_jar="$module_dir/$(basename "$jar")"
+            # Ensure the JAR file is copied to the module directory (if not already)
+            dest_jar="$module_dir/$(basename $jar)"
             if [ "$jar" != "$dest_jar" ]; then
               cp "$jar" "$dest_jar"
+            else
+              echo "File $jar is already in the destination directory, skipping copy."
             fi
-
-            echo "Building Docker image: $image_name"
-            docker build -t "$image_name" "$module_dir"
-            docker push "$image_name"
+            jar_basename=$(basename "$jar")
+            jar_path="$module_dir/$jar_basename"
+            
+            if [ -f "$jar_path" ]; then
+              echo "Found JAR: $jar_path. Building Docker image..."
+              docker build -t "$image_name_lowercase" "$module_dir"
+              docker push "$image_name_lowercase"
+            else
+              echo "JAR not found at $jar_path. Skipping Docker build."
+            fi
+          
           done
