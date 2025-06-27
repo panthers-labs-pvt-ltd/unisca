@@ -7,10 +7,10 @@
     <parent>
         <groupId>org.pantherslabs.chimera</groupId>
         <artifactId>unisca</artifactId>
-        <version>1.0.0</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <name>kvstore</name>
+    <name>Key Value Store</name>
     <description>
         A simple, lightweight key–value storage module (in-memory/persistent optional backends)
         that provides efficient get/put/delete operations and supports pluggable storage implementations.
