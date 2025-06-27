@@ -5,8 +5,12 @@ import com.fasterxml.jackson.core.util.MinimalPrettyPrinter;
 import java.io.IOException;
 import java.util.*;
 
-import static org.pantherslabs.chimera.utilities.ChimeraUtils.*;
+
 import com.fasterxml.jackson.core.JsonGenerator;
+
+import static org.pantherslabs.chimera.utilities.ChimeraUtils.getSparkClassLoader;
+import static org.pantherslabs.chimera.utilities.ChimeraUtils.toJsonString;
+
 public class ThrowableHelper {
 
     private static final ErrorClassesJsonReader errorReader = new ErrorClassesJsonReader(
