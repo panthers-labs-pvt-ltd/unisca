@@ -49,6 +49,28 @@ jobs:
       - name: Step 5 - Set Maven Project Version
         run: mvn versions:set -DnewVersion=${{steps.extract_version.outputs.version }}
 
+      - name: Step 5.5 - Check if version exists in Maven Central
+        id: version_check
+        run: |
+          VERSION="${{ steps.extract_version.outputs.version }}"
+          GROUP_ID="org.pantherslabs.chimera"
+          ARTIFACT_ID="unisca"
+      
+          GROUP_PATH=$(echo $GROUP_ID | tr '.' '/')
+          URL="https://repo1.maven.org/maven2/${GROUP_PATH}/${ARTIFACT_ID}/${VERSION}/${ARTIFACT_ID}-${VERSION}.pom"
+      
+          echo "Checking Maven Central for version $VERSION..."
+          if curl --silent --head --fail "$URL" > /dev/null; then
+            echo "Version already exists. Overriding to 1.0-SNAPSHOT."
+            echo "new_version=1.0-SNAPSHOT" >> "$GITHUB_OUTPUT"
+          else
+            echo "Version is unique. Keeping original version."
+            echo "new_version=${VERSION}" >> "$GITHUB_OUTPUT"
+          fi
+      
+      - name: Step 5.6 - Override version if needed
+        run: mvn versions:set -DnewVersion=${{ steps.version_check.outputs.new_version }}
+        
       - name: Step 6 - Build JARs
         env:
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
