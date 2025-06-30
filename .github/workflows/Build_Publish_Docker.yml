@@ -28,7 +28,11 @@ jobs:
           # Use version from input or fallback to POM
           version="${version_input:-$pom_version}"
           echo "Using Version: $version"
-          echo "version=${version,,}" >> "$GITHUB_OUTPUT"
+          if [[ "${version^^}" == *"-SNAPSHOT" ]]; then
+            echo "version=$version" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=${version,,}" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Step 3 - Import GPG Key
         run: |
@@ -55,10 +59,10 @@ jobs:
           VERSION="${{ steps.extract_version.outputs.version }}"
           GROUP_ID="org.pantherslabs.chimera"
           ARTIFACT_ID="unisca"
-      
+          
           GROUP_PATH=$(echo $GROUP_ID | tr '.' '/')
           URL="https://repo1.maven.org/maven2/${GROUP_PATH}/${ARTIFACT_ID}/${VERSION}/${ARTIFACT_ID}-${VERSION}.pom"
-      
+          
           echo "Checking Maven Central for version $VERSION..."
           if curl --silent --head --fail "$URL" > /dev/null; then
             echo "Version already exists. Overriding to 1.0-SNAPSHOT."
@@ -67,10 +71,10 @@ jobs:
             echo "Version is unique. Keeping original version."
             echo "new_version=${VERSION}" >> "$GITHUB_OUTPUT"
           fi
-      
+
       - name: Step 5.6 - Override version if needed
         run: mvn versions:set -DnewVersion=${{ steps.version_check.outputs.new_version }}
-        
+
       - name: Step 6 - Build JARs
         env:
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
@@ -90,13 +94,13 @@ jobs:
             module_dir="${module_dir%/target}"
             #module_name=$(basename "$(dirname "$jar")")
             module_name=$(basename "$module_dir")
-            
+          
             # Extract the version from the module's pom.xml
             version=$(grep -oP '(?<=<version>)[^<]+' "$module_dir/pom.xml" | head -n 1)
-            
+          
             # Ensure module_name is lowercase and replace spaces with underscores
             formatted_module_name=$(echo "$module_name" | tr '[:space:]' '_'| sed 's/__/_/g'| sed 's/_$//')
-            
+          
             # Construct the image name with version and convert everything to lowercase
             #image_name="ghcr.io/${{ github.repository_owner }}/${formatted_module_name}:${version}"
             image_name="pantherslabspvtltd/${formatted_module_name}:${version}"
@@ -121,7 +125,7 @@ jobs:
             fi
             jar_basename=$(basename "$jar")
             jar_path="$module_dir/$jar_basename"
-            
+          
             if [ -f "$jar_path" ]; then
               echo "Found JAR: $jar_path. Building Docker image..."
               docker build -t "$image_name_lowercase" "$module_dir"

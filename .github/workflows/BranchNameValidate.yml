@@ -1,9 +1,0 @@
-name: Branch Naming Check
-
-on:
-  pull_request:
-    types: [opened, synchronize, edited]
-
-jobs:
-  check:
-    uses: panthers-labs-pvt-ltd/demo-repository/.github/workflows/framework-jira-branch-check.yml@main
