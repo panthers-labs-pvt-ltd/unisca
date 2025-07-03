@@ -16,8 +16,8 @@ Add the dependency to your service's `pom.xml`:
 ```xml
 
 <dependency>
-    <groupId>com.progressive.minds</groupId>
-    <artifactId>chimera-api-nexus-db</artifactId>
+    <groupId>org.pantherslabs.chimera</groupId>
+    <artifactId>api-nexus-db</artifactId>
     <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
