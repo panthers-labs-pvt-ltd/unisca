@@ -10,6 +10,14 @@
     </parent>
 
     <artifactId>api-nexus-db</artifactId>
+    <name>API Nexus DB Module</name>
+    <description>
+        Data-access module for the Nexus API: encapsulates all database operations,
+        including schema mapping, entity persistence, repository implementations,
+        and transaction management. Provides a clean separation between API
+        layers and data storage using Spring Data / JPA or JDBC.
+    </description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/api-nexus/api-nexus-db</url>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

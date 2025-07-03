@@ -10,6 +10,14 @@
     </parent>
 
     <artifactId>api-nexus</artifactId>
+    <name>API Parent POM</name>
+    <description>
+        Parent POM for all API modules: provides shared groupId/version,
+        dependencyManagement (common libraries like Spring Boot, validation,
+        and logging), pluginManagement, and standard build configuration.
+        Ensures consistency, simplifies maintenance for multi-module API projects .
+    </description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/api-nexus</url>
 
     <packaging>pom</packaging>
     <modules>

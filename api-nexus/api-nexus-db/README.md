@@ -80,12 +80,12 @@ Then, modify it to include your table details:
 <generatorConfiguration>
     <!-- Update the target package for generated models and mappers -->
     <javaModelGenerator
-            targetPackage="com.progressive.minds.chimera.model"
+            targetPackage="org.pantherslabs.chimera.model"
             targetProject="src/main/java"/>
 
     <javaClientGenerator
             type="ANNOTATEDMAPPER"
-            targetPackage="com.progressive.minds.chimera.mapper"
+            targetPackage="org.pantherslabs.chimera.mapper"
             targetProject="src/main/java"/>
 
     <!-- Add your service-specific tables -->

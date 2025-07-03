@@ -23,7 +23,7 @@ logging:
   level:
     org.springframework.boot.autoconfigure: DEBUG
     org.springframework.boot.env: DEBUG
-    com.progressive.minds.chimera: DEBUG
+    org.pantherslabs.chimera: DEBUG
 retry:
   enabled: false
 

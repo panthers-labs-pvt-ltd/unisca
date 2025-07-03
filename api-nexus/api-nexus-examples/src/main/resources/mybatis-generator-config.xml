@@ -20,13 +20,13 @@
 
         <!-- 3. Model/Client Generators -->
         <javaModelGenerator
-                targetPackage="com.progressive.minds.chimera.examples.model.generated"
+                targetPackage="org.pantherslabs.chimera.examples.model.generated"
                 targetProject="src/main/java"/>
 
         <!-- 4. Mapper Generators -->
         <javaClientGenerator
                 type="ANNOTATEDMAPPER"
-                targetPackage="com.progressive.minds.chimera.examples.mapper.generated"
+                targetPackage="org.pantherslabs.chimera.examples.mapper.generated"
                 targetProject="src/main/java"/>
 
         <!-- 5. Tables -->

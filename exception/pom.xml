@@ -10,15 +10,13 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <name>Exception</name>
+    <description>The exception-handling module provides centralized exception management for the application. It defines custom exception classes, global exception handlers, and utility functions to handle and format exceptions in a consistent and maintainable way across all modules.</description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/exception</url>
     <artifactId>unisca.exception</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-        <dependency>
-            <groupId>org.pantherslabs.chimera</groupId>
-            <artifactId>unisca.utilities</artifactId>
-            <version>${chimera.project.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.pantherslabs.chimera</groupId>
             <artifactId>unisca.logging</artifactId>
@@ -27,6 +25,12 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.pantherslabs.chimera</groupId>
+            <artifactId>unisca.utilities</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

@@ -22,12 +22,12 @@
 
         <!-- 3. Model/Client Generators -->
         <javaModelGenerator
-                targetPackage="com.progressive.minds.chimera.model"
+                targetPackage="org.pantherslabs.chimera.model"
                 targetProject="src/main/java"/>
 
         <javaClientGenerator
                 type="ANNOTATEDMAPPER"
-                targetPackage="com.progressive.minds.chimera.mapper"
+                targetPackage="org.pantherslabs.chimera.mapper"
                 targetProject="src/main/java"/>
 
         <!-- 4. Tables -->

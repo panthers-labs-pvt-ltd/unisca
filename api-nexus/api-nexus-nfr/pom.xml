@@ -10,6 +10,13 @@
     </parent>
 
     <artifactId>api-nexus-nfr</artifactId>
+    <name>API Nexus NFR Module</name>
+    <description>
+        Provides integration with Nexus Repository Manager to manage Non-Functional Requirements (NFRs) artifacts.
+        Facilitates automated publishing, versioning, and retrieval of NFR-related components, ensuring compliance
+        with performance, security, and scalability standards.
+    </description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/api-nexus/api-nexus-nfr</url>
 
     <dependencies>
         <!-- Security -->

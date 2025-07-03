@@ -10,6 +10,13 @@
     </parent>
 
     <artifactId>api-nexus-swagger-docs</artifactId>
+    <name>API Nexus Swagger Docs Module</name>
+    <description>
+        Integrates Swagger UI and Swagger Core to auto-generate and serve interactive API documentation
+        for Nexus Repository Manager REST endpoints. Facilitates seamless API exploration and testing
+        for developers and integrators.
+    </description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/api-nexus/api-nexus-swagger-docs</url>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
