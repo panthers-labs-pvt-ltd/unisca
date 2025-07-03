@@ -24,8 +24,8 @@ A Spring Boot starter for automatic Keycloak configuration and management.
 
 ```xml
 <dependency>
-      <groupId>com.progressive.minds</groupId>
-      <artifactId>chimera-api-nexus-security</artifactId>
+      <groupId>org.pantherslabs.chimera</groupId>
+      <artifactId>api-nexus-security</artifactId>
       <version>1.0-SNAPSHOT</version>
 </dependency>
 ```

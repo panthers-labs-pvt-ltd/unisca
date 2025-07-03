@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.panthers.labs.chimera</groupId>
+        <groupId>org.pantherslabs.chimera</groupId>
         <artifactId>api-nexus</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -28,18 +28,18 @@
             <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.progressive.minds</groupId>
-            <artifactId>chimera-api-nexus-db</artifactId>
+            <groupId>org.pantherslabs.chimera</groupId>
+            <artifactId>api-nexus-db</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.progressive.minds</groupId>
-            <artifactId>chimera-api-nexus-swagger-docs</artifactId>
+            <groupId>org.pantherslabs.chimera</groupId>
+            <artifactId>api-nexus-swagger-docs</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.progressive.minds</groupId>
-            <artifactId>chimera-api-nexus-security</artifactId>
+            <groupId>org.pantherslabs.chimera</groupId>
+            <artifactId>api-nexus-security</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
