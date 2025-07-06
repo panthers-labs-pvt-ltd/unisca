@@ -6,7 +6,7 @@
     "subClass": {
       "InvalidInputParameter": {
         "message": [
-          "Input provided by user is invalid. Please check."
+          "Input provided by user is invalid. Please check. <exception>"
         ]
       },
       "SQLException": {

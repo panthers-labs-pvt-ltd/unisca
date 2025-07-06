@@ -33,7 +33,8 @@ public class ErrorClassesJsonReader {
 
     // write a function on a HapMap to map a key value to "null" if the value of the key is null
     private void mapNullValuesToNull(Map<String, String> map) {
-        map.replaceAll((key, value) -> value == null ? "null" : value);
+        Map<String, String> mutableMap = new HashMap<>(map);
+        mutableMap.replaceAll((key, value) -> value == null ? "null" : value);
     }
 
     public String getErrorMessage(String errorClass, Map<String, String> messageParameters) {

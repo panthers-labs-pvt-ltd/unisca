@@ -6,32 +6,32 @@
         "subClass": {
             "InvalidInputParameter": {
                 "message": [
-                    "Input provided by user is invalid. Please check."
+                    "Input provided by user is invalid. Please check. <exception>"
                 ]
             },
             "SQLException": {
                 "message": [
-                    "Error detected while interacting with DataSource"
+                    "Error detected while interacting with DataSource  <exception>"
                 ]
             },
             "UnsupportedDataSources": {
                 "message": [
-                    "Unsupported Data Source, OBDEF is supporting MS SQL Server, Oracle, PostgreSQL, Maria DB, MY SQL & Snowflake Databases as well as Parquet / Avro / Csv / Json / Delta / Iceberg / Cobol / Excel(XLSX) / ORC File Formats"
+                    "Unsupported Data Source, Chimera is supporting MS SQL Server, Oracle, PostgreSQL, Maria DB, MY SQL & Snowflake Databases as well as Parquet / Avro / Csv / Json / Delta / Iceberg / Cobol / Excel(XLSX) / ORC File Formats"
                 ]
             },
             "FileNotFound": {
                 "message": [
-                    "File Not Found Exception"
+                    "File Not Found Exception  <exception>"
                 ]
             },
             "MultipleFileFound": {
                 "message": [
-                    "Multiple File found with same pattern or name"
+                    "Multiple File found with same pattern or name  <exception>"
                 ]
             },
             "UnsupportedSchemaType": {
                 "message": [
-                    "only YML, JSON, avsc,and jsd schema supported"
+                    "only YML, JSON, avsc,and jsd schema supported  <exception>"
                 ]
             },
             "UNCAUGHT_EXCEPTION": {
@@ -41,209 +41,209 @@
             },
             "InvalidSchema": {
                 "message": [
-                    "Invalid schema, accepted schema is yml or Json format"
+                    "Invalid schema, accepted schema is yml or Json format  <exception>"
                 ]
             },
             "DataSourceReadError": {
                 "message": [
-                    "Error occurred while reading from data source"
+                    "Error occurred while reading from data source  <exception>"
                 ]
             },
             "DataSourceWriteError": {
                 "message": [
-                    "Error Occurred while writing to data source"
+                    "Error Occurred while writing to data source  <exception>"
                 ]
             }
         }
     },
     "APIException": {
         "message": [
-            "Error Generated Due to Framework -DataSourceException Exception"
+            "API Exception"
         ],
         "subClass": {
             "400": {
                 "message": [
-                    "Bad Request: The server could not understand the request due to invalid syntax."
+                    "Bad Request: The server could not understand the request due to invalid syntax <exception>.  <exception>"
                 ]
             },
             "401": {
                 "message": [
-                    "Unauthorized: The client must authenticate itself to get the requested response."
+                    "Unauthorized: The client must authenticate itself to get the requested response.  <exception>"
                 ]
             },
             "402": {
                 "message": [
-                    "Payment Required: Reserved for future use."
+                    "Payment Required: Reserved for future use. <exception>"
                 ]
             },
             "403": {
                 "message": [
-                    "Forbidden: The client does not have access rights to the content."
+                    "Forbidden: The client does not have access rights to the content. <exception>"
                 ]
             },
             "404": {
                 "message": [
-                    "Not Found: The server can not find the requested resource."
+                    "Not Found: The server can not find the requested resource. <exception>"
                 ]
             },
             "405": {
                 "message": [
-                    "Method Not Allowed: The request method is known by the server but is not supported by the target resource."
+                    "Method Not Allowed: The request method is known by the server but is not supported by the target resource. <exception>"
                 ]
             },
             "406": {
                 "message": [
-                    "Not Acceptable: The server cannot produce a response matching the list of acceptable values."
+                    "Not Acceptable: The server cannot produce a response matching the list of acceptable values. <exception>"
                 ]
             },
             "407": {
                 "message": [
-                    "Proxy Authentication Required: The client must authenticate itself with a proxy."
+                    "Proxy Authentication Required: The client must authenticate itself with a proxy.  <exception>"
                 ]
             },
             "408": {
                 "message": [
-                    "Request Timeout: The server would like to shut down this unused connection."
+                    "Request Timeout: The server would like to shut down this unused connection.  <exception>"
                 ]
             },
             "409": {
                 "message": [
-                    "Conflict: The request conflicts with the current state of the server."
+                    "Conflict: The request conflicts with the current state of the server.  <exception>"
                 ]
             },
             "410": {
                 "message": [
-                    "Gone: The requested content has been permanently deleted from the server."
+                    "Gone: The requested content has been permanently deleted from the server.  <exception>"
                 ]
             },
             "411": {
                 "message": [
-                    "Length Required: The server refuses to accept the request without a defined Content-Length header."
+                    "Length Required: The server refuses to accept the request without a defined Content-Length header.  <exception>"
                 ]
             },
             "412": {
                 "message": [
-                    "Precondition Failed: The client has indicated preconditions in its headers which the server does not meet."
+                    "Precondition Failed: The client has indicated preconditions in its headers which the server does not meet.  <exception>"
                 ]
             },
             "413": {
                 "message": [
-                    "Payload Too Large: The request entity is larger than limits defined by server."
+                    "Payload Too Large: The request entity is larger than limits defined by server.  <exception>"
                 ]
             },
             "414": {
                 "message": [
-                    "URI Too Long: The URI requested by the client is longer than the server is willing to interpret."
+                    "URI Too Long: The URI requested by the client is longer than the server is willing to interpret.  <exception>"
                 ]
             },
             "415": {
                 "message": [
-                    "Unsupported Media Type: The media format of the requested data is not supported by the server."
+                    "Unsupported Media Type: The media format of the requested data is not supported by the server.  <exception>"
                 ]
             },
             "416": {
                 "message": [
-                    "Range Not Satisfiable: The range specified by the Range header field in the request can't be fulfilled."
+                    "Range Not Satisfiable: The range specified by the Range header field in the request can't be fulfilled.  <exception>"
                 ]
             },
             "417": {
                 "message": [
-                    "Expectation Failed: The expectation given in the request's Expect header could not be met."
+                    "Expectation Failed: The expectation given in the request's Expect header could not be met.  <exception>"
                 ]
             },
             "418": {
                 "message": [
-                    "I'm a teapot: This code was defined in 1998 as one of the traditional IETF April Fools' jokes."
+                    "I'm a teapot: This code was defined in 1998 as one of the traditional IETF April Fools' jokes.  <exception>"
                 ]
             },
             "422": {
                 "message": [
-                    "Unprocessable Entity: The request was well-formed but unable to be followed due to semantic errors."
+                    "Unprocessable Entity: The request was well-formed but unable to be followed due to semantic errors.  <exception>"
                 ]
             },
             "425": {
                 "message": [
-                    "Too Early: Indicates that the server is unwilling to risk processing a request that might be replayed."
+                    "Too Early: Indicates that the server is unwilling to risk processing a request that might be replayed.  <exception>"
                 ]
             },
             "426": {
                 "message": [
-                    "Upgrade Required: The client should switch to a different protocol."
+                    "Upgrade Required: The client should switch to a different protocol.  <exception>"
                 ]
             },
             "428": {
                 "message": [
-                    "Precondition Required: The origin server requires the request to be conditional."
+                    "Precondition Required: The origin server requires the request to be conditional.  <exception>"
                 ]
             },
             "429": {
                 "message": [
-                    "Too Many Requests: The user has sent too many requests in a given amount of time."
+                    "Too Many Requests: The user has sent too many requests in a given amount of time.  <exception>"
                 ]
             },
             "431": {
                 "message": [
-                    "Request Header Fields Too Large: The server is unwilling to process the request because its header fields are too large."
+                    "Request Header Fields Too Large: The server is unwilling to process the request because its header fields are too large.  <exception>"
                 ]
             },
             "451": {
                 "message": [
-                    "Unavailable For Legal Reasons: The user-agent requested a resource that cannot legally be provided."
+                    "Unavailable For Legal Reasons: The user-agent requested a resource that cannot legally be provided.  <exception>"
                 ]
             },
             "500": {
                 "message": [
-                    "Internal Server Error: The server has encountered a situation it doesn't know how to handle."
+                    "Internal Server Error: The server has encountered a situation it doesn't know how to handle.  <exception>"
                 ]
             },
             "501": {
                 "message": [
-                    "Not Implemented: The request method is not supported by the server and cannot be handled."
+                    "Not Implemented: The request method is not supported by the server and cannot be handled.  <exception>"
                 ]
             },
             "502": {
                 "message": [
-                    "Bad Gateway: The server was acting as a gateway or proxy and received an invalid response from the upstream server."
+                    "Bad Gateway: The server was acting as a gateway or proxy and received an invalid response from the upstream server.  <exception>"
                 ]
             },
             "503": {
                 "message": [
-                    "Service Unavailable: The server is not ready to handle the request."
+                    "Service Unavailable: The server is not ready to handle the request.  <exception>"
                 ]
             },
             "504": {
                 "message": [
-                    "Gateway Timeout: The server is acting as a gateway or proxy and did not receive a timely response from the upstream server."
+                    "Gateway Timeout: The server is acting as a gateway or proxy and did not receive a timely response from the upstream server.  <exception>"
                 ]
             },
             "505": {
                 "message": [
-                    "HTTP Version Not Supported: The HTTP version used in the request is not supported by the server."
+                    "HTTP Version Not Supported: The HTTP version used in the request is not supported by the server.  <exception>"
                 ]
             },
             "506": {
                 "message": [
-                    "Variant Also Negotiates: The server has an internal configuration error."
+                    "Variant Also Negotiates: The server has an internal configuration error.  <exception>"
                 ]
             },
             "507": {
                 "message": [
-                    "Insufficient Storage: The server is unable to store the representation needed to complete the request."
+                    "Insufficient Storage: The server is unable to store the representation needed to complete the request.  <exception>"
                 ]
             },
             "508": {
                 "message": [
-                    "Loop Detected: The server detected an infinite loop while processing the request."
+                    "Loop Detected: The server detected an infinite loop while processing the request.  <exception>"
                 ]
             },
             "510": {
                 "message": [
-                    "Not Extended: Further extensions to the request are required for the server to fulfill it."
+                    "Not Extended: Further extensions to the request are required for the server to fulfill it.  <exception>"
                 ]
             },
             "511": {
                 "message": [
-                    "Network Authentication Required: The client needs to authenticate to gain network access."
+                    "Network Authentication Required: The client needs to authenticate to gain network access.  <exception>"
                 ]
             }
         }
