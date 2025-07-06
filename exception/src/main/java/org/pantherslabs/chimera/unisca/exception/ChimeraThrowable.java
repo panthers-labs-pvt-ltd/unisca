@@ -1,8 +1,7 @@
 package org.pantherslabs.chimera.unisca.exception;
 
 import java.util.Map;
-
-public interface Throwable {
+public interface ChimeraThrowable {
 
     // Abstract method to get the error class
     String getErrorClass();

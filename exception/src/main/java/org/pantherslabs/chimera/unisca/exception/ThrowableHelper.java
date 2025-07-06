@@ -32,7 +32,7 @@ public class ThrowableHelper {
         return "INTERNAL_ERROR".equals(errorClass);
     }
 
-    public static String getMessage(Throwable e, ErrorMessageFormat format) {
+    public static String getMessage(ChimeraThrowable e, ErrorMessageFormat format) {
         try {
             switch (format) {
                 case PRETTY:
@@ -66,7 +66,7 @@ public class ThrowableHelper {
         }
     }
 
-    private static String generateLegacyErrorJson(Throwable e) throws IOException {
+    private static String generateLegacyErrorJson(ChimeraThrowable e) throws IOException {
         return toJsonString(generator -> {
             JsonGenerator g = generator.useDefaultPrettyPrinter();
             g.writeStartObject();
@@ -78,7 +78,7 @@ public class ThrowableHelper {
         });
     }
 
-    private static String generateErrorJson(Throwable e, ErrorMessageFormat format) throws IOException {
+    private static String generateErrorJson(ChimeraThrowable e, ErrorMessageFormat format) throws IOException {
         return toJsonString(generator -> {
             JsonGenerator g = generator.useDefaultPrettyPrinter();
             g.writeStartObject();

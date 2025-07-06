@@ -49,7 +49,7 @@ public class ErrorClassesJsonReader {
             // TODO: Check if this is the right exception to throw
             throw ChimeraException.internalError(
                     String.format("Could not replace parameters for error class: '%s' Parameters: %s", errorClass, messageParameters),
-                    (Throwable) ex
+                    (ChimeraThrowable) ex
             );
         }
     }
@@ -61,8 +61,8 @@ public class ErrorClassesJsonReader {
         String subErrorClass = errorClasses.length > 1 ? errorClasses[1] : null;
 
         ErrorInfo errorInfo = errorInfoMap.get(mainErrorClass);
-        if (errorInfo == null) {
-            throw ChimeraException.internalError("Cannot find main error class: " + errorClass);
+       if (errorInfo == null) {
+            throw new RuntimeException("Cannot find main error class: " + errorClass);
         }
 
         if (subErrorClass == null) {
