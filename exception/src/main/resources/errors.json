@@ -1,59 +1,251 @@
 {
-  "DataSourceException": {
-    "message": [
-      "Error Generated Due to Framework -DataSourceException Exception"
-    ],
-    "subClass": {
-      "InvalidInputParameter": {
+    "DataSourceException": {
         "message": [
-          "Input provided by user is invalid. Please check."
-        ]
-      },
-      "SQLException": {
+            "Error Generated Due to Framework -DataSourceException Exception"
+        ],
+        "subClass": {
+            "InvalidInputParameter": {
+                "message": [
+                    "Input provided by user is invalid. Please check."
+                ]
+            },
+            "SQLException": {
+                "message": [
+                    "Error detected while interacting with DataSource"
+                ]
+            },
+            "UnsupportedDataSources": {
+                "message": [
+                    "Unsupported Data Source, OBDEF is supporting MS SQL Server, Oracle, PostgreSQL, Maria DB, MY SQL & Snowflake Databases as well as Parquet / Avro / Csv / Json / Delta / Iceberg / Cobol / Excel(XLSX) / ORC File Formats"
+                ]
+            },
+            "FileNotFound": {
+                "message": [
+                    "File Not Found Exception"
+                ]
+            },
+            "MultipleFileFound": {
+                "message": [
+                    "Multiple File found with same pattern or name"
+                ]
+            },
+            "UnsupportedSchemaType": {
+                "message": [
+                    "only YML, JSON, avsc,and jsd schema supported"
+                ]
+            },
+            "UNCAUGHT_EXCEPTION": {
+                "message": [
+                    "UNCAUGHT_EXCEPTION"
+                ]
+            },
+            "InvalidSchema": {
+                "message": [
+                    "Invalid schema, accepted schema is yml or Json format"
+                ]
+            },
+            "DataSourceReadError": {
+                "message": [
+                    "Error occurred while reading from data source"
+                ]
+            },
+            "DataSourceWriteError": {
+                "message": [
+                    "Error Occurred while writing to data source"
+                ]
+            }
+        }
+    },
+    "APIException": {
         "message": [
-          "Error detected while interacting with DataSource"
-        ]
-      },
-      "UnsupportedDataSources": {
-        "message": [
-          "Unsupported Data Source, OBDEF is supporting MS SQL Server, Oracle, PostgreSQL, Maria DB, MY SQL & Snowflake Databases as well as Parquet / Avro / Csv / Json / Delta / Iceberg / Cobol / Excel(XLSX) / ORC File Formats"
-        ]
-      },
-      "FileNotFound": {
-        "message": [
-          "File Not Found Exception"
-        ]
-      },
-      "MultipleFileFound": {
-        "message": [
-          "Multiple File found with same pattern or name"
-        ]
-      },
-      "UnsupportedSchemaType": {
-        "message": [
-          "only YML, JSON, avsc,and jsd schema supported"
-        ]
-      },
-      "UNCAUGHT_EXCEPTION": {
-        "message": [
-          "UNCAUGHT_EXCEPTION"
-        ]
-      },
-      "InvalidSchema": {
-        "message": [
-          "Invalid schema, accepted schema is yml or Json format"
-        ]
-      },
-      "DataSourceReadError": {
-        "message": [
-          "Error occurred while reading from data source"
-        ]
-      },
-      "DataSourceWriteError": {
-        "message": [
-          "Error Occurred while writing to data source"
-        ]
-      }
+            "Error Generated Due to Framework -DataSourceException Exception"
+        ],
+        "subClass": {
+            "400": {
+                "message": [
+                    "Bad Request: The server could not understand the request due to invalid syntax."
+                ]
+            },
+            "401": {
+                "message": [
+                    "Unauthorized: The client must authenticate itself to get the requested response."
+                ]
+            },
+            "402": {
+                "message": [
+                    "Payment Required: Reserved for future use."
+                ]
+            },
+            "403": {
+                "message": [
+                    "Forbidden: The client does not have access rights to the content."
+                ]
+            },
+            "404": {
+                "message": [
+                    "Not Found: The server can not find the requested resource."
+                ]
+            },
+            "405": {
+                "message": [
+                    "Method Not Allowed: The request method is known by the server but is not supported by the target resource."
+                ]
+            },
+            "406": {
+                "message": [
+                    "Not Acceptable: The server cannot produce a response matching the list of acceptable values."
+                ]
+            },
+            "407": {
+                "message": [
+                    "Proxy Authentication Required: The client must authenticate itself with a proxy."
+                ]
+            },
+            "408": {
+                "message": [
+                    "Request Timeout: The server would like to shut down this unused connection."
+                ]
+            },
+            "409": {
+                "message": [
+                    "Conflict: The request conflicts with the current state of the server."
+                ]
+            },
+            "410": {
+                "message": [
+                    "Gone: The requested content has been permanently deleted from the server."
+                ]
+            },
+            "411": {
+                "message": [
+                    "Length Required: The server refuses to accept the request without a defined Content-Length header."
+                ]
+            },
+            "412": {
+                "message": [
+                    "Precondition Failed: The client has indicated preconditions in its headers which the server does not meet."
+                ]
+            },
+            "413": {
+                "message": [
+                    "Payload Too Large: The request entity is larger than limits defined by server."
+                ]
+            },
+            "414": {
+                "message": [
+                    "URI Too Long: The URI requested by the client is longer than the server is willing to interpret."
+                ]
+            },
+            "415": {
+                "message": [
+                    "Unsupported Media Type: The media format of the requested data is not supported by the server."
+                ]
+            },
+            "416": {
+                "message": [
+                    "Range Not Satisfiable: The range specified by the Range header field in the request can't be fulfilled."
+                ]
+            },
+            "417": {
+                "message": [
+                    "Expectation Failed: The expectation given in the request's Expect header could not be met."
+                ]
+            },
+            "418": {
+                "message": [
+                    "I'm a teapot: This code was defined in 1998 as one of the traditional IETF April Fools' jokes."
+                ]
+            },
+            "422": {
+                "message": [
+                    "Unprocessable Entity: The request was well-formed but unable to be followed due to semantic errors."
+                ]
+            },
+            "425": {
+                "message": [
+                    "Too Early: Indicates that the server is unwilling to risk processing a request that might be replayed."
+                ]
+            },
+            "426": {
+                "message": [
+                    "Upgrade Required: The client should switch to a different protocol."
+                ]
+            },
+            "428": {
+                "message": [
+                    "Precondition Required: The origin server requires the request to be conditional."
+                ]
+            },
+            "429": {
+                "message": [
+                    "Too Many Requests: The user has sent too many requests in a given amount of time."
+                ]
+            },
+            "431": {
+                "message": [
+                    "Request Header Fields Too Large: The server is unwilling to process the request because its header fields are too large."
+                ]
+            },
+            "451": {
+                "message": [
+                    "Unavailable For Legal Reasons: The user-agent requested a resource that cannot legally be provided."
+                ]
+            },
+            "500": {
+                "message": [
+                    "Internal Server Error: The server has encountered a situation it doesn't know how to handle."
+                ]
+            },
+            "501": {
+                "message": [
+                    "Not Implemented: The request method is not supported by the server and cannot be handled."
+                ]
+            },
+            "502": {
+                "message": [
+                    "Bad Gateway: The server was acting as a gateway or proxy and received an invalid response from the upstream server."
+                ]
+            },
+            "503": {
+                "message": [
+                    "Service Unavailable: The server is not ready to handle the request."
+                ]
+            },
+            "504": {
+                "message": [
+                    "Gateway Timeout: The server is acting as a gateway or proxy and did not receive a timely response from the upstream server."
+                ]
+            },
+            "505": {
+                "message": [
+                    "HTTP Version Not Supported: The HTTP version used in the request is not supported by the server."
+                ]
+            },
+            "506": {
+                "message": [
+                    "Variant Also Negotiates: The server has an internal configuration error."
+                ]
+            },
+            "507": {
+                "message": [
+                    "Insufficient Storage: The server is unable to store the representation needed to complete the request."
+                ]
+            },
+            "508": {
+                "message": [
+                    "Loop Detected: The server detected an infinite loop while processing the request."
+                ]
+            },
+            "510": {
+                "message": [
+                    "Not Extended: Further extensions to the request are required for the server to fulfill it."
+                ]
+            },
+            "511": {
+                "message": [
+                    "Network Authentication Required: The client needs to authenticate to gain network access."
+                ]
+            }
+        }
     }
-  }
 }
