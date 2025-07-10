@@ -1,13 +1,13 @@
 package org.pantherslabs.chimera.unisca.execution_engine.estimator;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 import org.apache.spark.sql.SparkSession.Builder;
 import org.apache.spark.unsafe.array.ByteArrayMethods;
+import org.pantherslabs.chimera.unisca.logging.ChimeraLogger;
+import org.pantherslabs.chimera.unisca.logging.ChimeraLoggerFactory;
 
 public class SQLEstimator extends ConfEstimator {
+    private static final ChimeraLogger logger = ChimeraLoggerFactory.getLogger(SQLEstimator.class);
 
-    Logger logger =  LogManager.getLogger(SQLEstimator.class.getName());
 
     public SQLEstimator(Builder ctxBuilder) {
         super(ctxBuilder);
@@ -26,7 +26,7 @@ public class SQLEstimator extends ConfEstimator {
 
         //spark catalog implementation
         //possible value "hive", "in-memory"
-        builder.config("spark.sql.catalogImplementation","in-memory");
+        builder.config("spark.sql.catalogImplementation","hive");
 
         // System preserved database should not exists in metastore. However it's hard to guarantee it
         // for every session, because case-sensitivity differs. Here we always lowercase it to make our

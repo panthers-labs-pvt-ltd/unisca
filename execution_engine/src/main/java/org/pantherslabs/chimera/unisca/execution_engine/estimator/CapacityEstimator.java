@@ -1,8 +1,8 @@
 package org.pantherslabs.chimera.unisca.execution_engine.estimator;
 
-import org.apache.logging.log4j.Logger;
 import org.apache.spark.sql.SparkSession;
-import org.apache.logging.log4j.LogManager;
+import org.pantherslabs.chimera.unisca.logging.ChimeraLogger;
+import org.pantherslabs.chimera.unisca.logging.ChimeraLoggerFactory;
 
 
 /*
@@ -50,7 +50,7 @@ There are three sections to this -
  */
 
 public class CapacityEstimator extends ConfEstimator {
-    Logger logger =  LogManager.getLogger(CapacityEstimator.class.getName());
+    private static final ChimeraLogger logger = ChimeraLoggerFactory.getLogger(CapacityEstimator.class);
 
     public CapacityEstimator(SparkSession.Builder builder) {
         super(builder);
@@ -78,28 +78,28 @@ public class CapacityEstimator extends ConfEstimator {
             int numberOfNode = 5;
             int numberOfCoresPerNode = 36;
             int memoryPerNode = 72 * 1024; //Always in mb
-            logger.info(String.format("Node #: %d; CorePerNode #: %d; memoryPerNode: %d m",numberOfNode, numberOfCoresPerNode, memoryPerNode));
+            logger.logInfo(String.format("Node #: %d; CorePerNode #: %d; memoryPerNode: %d m",numberOfNode, numberOfCoresPerNode, memoryPerNode));
             int totalMemory = numberOfNode * memoryPerNode; //720GB
             int memoryOverhead = Math.round((float) 0.1 * memoryPerNode) * numberOfNode; //72
             int totalAvailableCore = (numberOfCoresPerNode - 1) * numberOfNode; //350
             int totalAvailableMemory = totalMemory - memoryOverhead - 3000; //648GB approx
-            logger.info(String.format("Total Memory: %d m; memoryOverHead: %d m; Total Available Core: %d; total Available Memory: %d m", totalMemory,memoryOverhead, totalAvailableCore, totalAvailableMemory));
+            logger.logInfo(String.format("Total Memory: %d m; memoryOverHead: %d m; Total Available Core: %d; total Available Memory: %d m", totalMemory,memoryOverhead, totalAvailableCore, totalAvailableMemory));
             //same for driver
             int corePerExecutor = 7;
             int numberOfPossibleExecutors = Math.round((float) totalAvailableCore / corePerExecutor);
-            logger.info("Possible Number of Executors: {}", numberOfPossibleExecutors);
+            logger.logInfo("Possible Number of Executors: {} " + numberOfPossibleExecutors);
             // Get the number of running applications and application to be scheduled in next 15 mins
             // RDS would maintain the changes within metadata module for now. It should later be moved to
             // workflowOrchestration Service.
             // This application should be part of the application to be scheduled.
             int applicationsInScope = 3;
-            logger.info("Spark applications running or scheduled shortly: {}",applicationsInScope);
+            logger.logInfo("Spark applications running or scheduled shortly: {} " + applicationsInScope);
             // Assuming every application has equal footprint
             numberOfExecutor = Math.round((float) totalAvailableCore / corePerExecutor / applicationsInScope) - 1;
-            logger.info("Number of executor for this application: {}",numberOfExecutor);
+            logger.logInfo("Number of executor for this application: {}" + numberOfExecutor);
 
             executorMemory = Math.round((float) totalAvailableMemory / numberOfExecutor / applicationsInScope);
-            logger.info("Executor Memory: {}", executorMemory);
+            logger.logInfo("Executor Memory: {}" + executorMemory);
 
 
     }
@@ -171,7 +171,7 @@ public class CapacityEstimator extends ConfEstimator {
         //Controls whether to clean checkpoint files if the reference is out of scope.
         builder.config("spark.cleaner.referenceTracking.cleanCheckpoints", true);
 
-        logger.info("Memory Management Config: {}", builder);
+        logger.logInfo("Memory Management Config: {}" +  builder);
 
     }
 }

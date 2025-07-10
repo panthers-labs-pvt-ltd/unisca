@@ -7,19 +7,17 @@ We never intend to use Spark for Streaming purposes.
 
  */
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
+import org.pantherslabs.chimera.unisca.logging.ChimeraLogger;
 import org.apache.spark.SparkContext;
 import org.apache.spark.sql.SparkSession;
 import org.pantherslabs.chimera.unisca.execution_engine.estimator.CapacityEstimator;
 import org.pantherslabs.chimera.unisca.execution_engine.estimator.HadoopS3Estimator;
 import org.pantherslabs.chimera.unisca.execution_engine.estimator.SQLEstimator;
-
+import org.pantherslabs.chimera.unisca.logging.ChimeraLoggerFactory;
 
 
 public class OptimizedSparkSession extends SparkSession {
-
-    private static final Logger log = LogManager.getLogger(OptimizedSparkSession.class.getName());
+    private static final ChimeraLogger log = ChimeraLoggerFactory.getLogger(OptimizedSparkSession.class);
     private static String application;
     private static String testmode;
     private static SparkSessionBuilder builder;
@@ -36,7 +34,7 @@ public class OptimizedSparkSession extends SparkSession {
     }
 
     private static void preInit() {
-        log.info("preInitializer");
+        log.logInfo("preInitializer");
     }
     /*
     This is the initiation of any spark application
@@ -51,7 +49,7 @@ public class OptimizedSparkSession extends SparkSession {
     This should never be called. This API would soon be removed.
      */
     public static OptimizedSparkSession get() {
-        log.info("Currently OptimizedSparkSession supports kubernetes only");
+        log.logInfo("Currently OptimizedSparkSession supports kubernetes only");
 
         //Find out the calling application name.
 
@@ -66,37 +64,46 @@ public class OptimizedSparkSession extends SparkSession {
         // Should be passed from spark-submit "k8s://https://BCCFC2782CB4F39B0E313D89057B3546.gr7.us-east-1.eks.amazonaws.com:443"
         else {
             //code for local mode .Commented as we have to run with cluster
-            builder = (SparkSessionBuilder) OptimizedSparkSession.builder().config("spark.master", "local[8]");
+            builder = (SparkSessionBuilder) OptimizedSparkSession.builder()
+                    .config("spark.master", "local[8]")
+                    .config("spark.sql.warehouse.dir", "/tmp/spark-warehouse")
+                    .config("javax.jdo.option.ConnectionURL", "jdbc:derby:metastore_db;create=true")
+                    .config("javax.jdo.option.ConnectionDriverName", "org.apache.derby.jdbc.EmbeddedDriver")
+                    .config("datanucleus.autoCreateSchema", "true")
+                    .enableHiveSupport();
         }
+        setDefaultCatalog();
+        log.logInfo("DefaultCatalog to Hive setup complete");
+
         setKubernetesConfiguration();
-        log.info("Kubernetes setup complete");
+        log.logInfo("Kubernetes setup complete");
 
         //Capacity Plan
         new CapacityEstimator(builder).setConfigValue();
-        log.info("Capacity Planned");
+        log.logInfo("Capacity Planned");
 
         // Some extra configuration might be required for Driver and Executor
         setDriverConfiguration();
-        log.info("Driver setup complete");
+        log.logInfo("Driver setup complete");
 
         setExecutorConfiguration();
-        log.info("Executor setup complete");
+        log.logInfo("Executor setup complete");
 
         //To-do
         setNetworkingConfiguration();
-        log.info("Network setup complete");
+        log.logInfo("Network setup complete");
 
         setSchedulingConfiguration();
-        log.info("Scheduling setup complete");
+        log.logInfo("Scheduling setup complete");
 
         setShuffleConfiguration();
-        log.info("Shuffle setup complete");
+        log.logInfo("Shuffle setup complete");
 
         setDynamicConfiguration();
-        log.info("Dynamic Allocation setup complete");
+        log.logInfo("Dynamic Allocation setup complete");
 
         setThreadConfiguration();
-        log.info("Thread setup complete");
+        log.logInfo("Thread setup complete");
 
         setExecutorMetrics();
 
@@ -104,20 +111,20 @@ public class OptimizedSparkSession extends SparkSession {
         new SQLEstimator(builder).setConfigValue();
 
         setCompressionAndSerializationBehaviors();
-        log.info("Compression and Serialization setup complete");
+        log.logInfo("Compression and Serialization setup complete");
 
         new HadoopS3Estimator(builder).setConfigValue();
-        log.info("Hadoop-AWS setup complete");
+        log.logInfo("Hadoop-AWS setup complete");
 
         //finally
         OptimizedSparkSession sparkSession = builder.getOrCreate();
-        log.info("Initial Session built");
+        log.logInfo("Initial Session built");
 
-        log.info("-----------------------Spark Configs Begin--------------------------");
+        log.logInfo("-----------------------Spark Configs Begin--------------------------");
         sparkSession.conf().getAll();
         sparkSession.sparkContext().getConf().getAll();
         sparkSession.sqlContext().conf().getAllConfs();
-        log.info("-----------------------Spark Configs End--------------------------");
+        log.logInfo("-----------------------Spark Configs End--------------------------");
 
         setLogger();
         return sparkSession;
@@ -304,7 +311,7 @@ public class OptimizedSparkSession extends SparkSession {
                         "-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/opt/efs/spark/logs/dumps "+
                         "-XX:OnOutOfMemoryError='kill -9 %p'");
 
-        log.debug("Driver Configuration: {}", builder);
+        log.logDebug("Driver Configuration: {}" +  builder);
     }
 
     private static void setExecutorConfiguration(){
@@ -338,7 +345,7 @@ public class OptimizedSparkSession extends SparkSession {
                 "-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/opt/efs/spark/logs/dumps "+
                 "-XX:OnOutOfMemoryError='kill -9 %p'");
 
-        log.debug("Executor Configuration: {}", builder);
+        log.logDebug("Executor Configuration: {} " + builder);
     }
 
     private static void setCompressionAndSerializationBehaviors() {
@@ -424,7 +431,7 @@ public class OptimizedSparkSession extends SparkSession {
         // By default it will reset the serializer every 100 objects.
         builder.config("spark.serializer.objectStreamReset", 100);
 
-        log.debug("Compression and Serializer Config: {}", builder);
+        log.logDebug("Compression and Serializer Config: {} " + builder);
     }
 
     private static void setShuffleConfiguration() {
@@ -518,9 +525,14 @@ public class OptimizedSparkSession extends SparkSession {
         //When we fail to register to the external shuffle service, we will retry for maxAttempts times.
         builder.config("spark.shuffle.registration.maxAttempts", 3);
 
-        log.debug("Shuffle Config: {}",builder);
+        log.logDebug("Shuffle Config: {} " + builder);
     }
 
+    private static void setDefaultCatalog(){
+        //possible value "hive", "in-memory"
+        builder.config("spark.sql.catalogImplementation","hive");
+
+    }
     private static void setExecutorMetrics() {
         // Whether to write per-stage peaks of executor metrics (for each executor) to the event log.
         // Note: The metrics are polled (collected) and sent in the executor heartbeat,
@@ -535,7 +547,7 @@ public class OptimizedSparkSession extends SparkSession {
         // How often to collect executor metrics (in milliseconds). If 0, the polling is done on executor
         // heartbeats (thus at the heartbeat interval, specified by <code>spark.executor.heartbeatInterval</code>).
         // If positive, the polling is done at this interval.
-        log.debug("Metrics config: {}", builder);
+        log.logDebug("Metrics config: {} " +  builder);
     }
 
     /*
@@ -651,7 +663,7 @@ public class OptimizedSparkSession extends SparkSession {
         // storing shuffle data. Setting it to 10minutes for now
         builder.config("spark.dynamicAllocation.shuffleTracking.timeout", "600s");
 
-        log.debug("Dynamic config: {}",builder);
+        log.logDebug("Dynamic config: {} "+ builder);
 
     }
 
@@ -733,7 +745,7 @@ public class OptimizedSparkSession extends SparkSession {
         // external shuffle service is at least 2.3.0.
         builder.config("spark.network.maxRemoteBlockSizeFetchToMem", "200m");
 
-        log.debug("Network config: {}",builder);
+        log.logDebug("Network config: {}" + builder);
     }
 
     private static void setSchedulingConfiguration() {
@@ -888,6 +900,6 @@ public class OptimizedSparkSession extends SparkSession {
         // Number of consecutive stage attempts allowed before a stage is aborted.
         builder.config("spark.stage.maxConsecutiveAttempts", 4);
 
-        log.debug("Network config: {}",builder);
+        log.logDebug("Network config: {}" + builder);
     }
 }

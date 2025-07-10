@@ -1,8 +1,8 @@
 package org.pantherslabs.chimera.unisca.execution_engine.estimator;
 
-import org.apache.logging.log4j.Logger;
 import org.apache.spark.sql.SparkSession;
-import org.apache.logging.log4j.LogManager;
+import org.pantherslabs.chimera.unisca.logging.ChimeraLogger;
+import org.pantherslabs.chimera.unisca.logging.ChimeraLoggerFactory;
 
 import static java.lang.Math.round;
 
@@ -11,13 +11,12 @@ This class is responsible to manage all the configuration related to driver.
  */
 public class DriverEstimator extends ConfEstimator {
 
-    private static final Logger log = LogManager.getLogger(DriverEstimator.class.getName());
+    private static final ChimeraLogger log = ChimeraLoggerFactory.getLogger(DriverEstimator.class);
 
     protected DriverEstimator(SparkSession.Builder ctxBuilder) {
         //protected builder variable initialized
         super(ctxBuilder);
         //if you want to test, validity of session and builder.
-        log.info(ctxBuilder);
     }
 
     @Override

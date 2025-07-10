@@ -1,8 +1,8 @@
 package org.pantherslabs.chimera.unisca.execution_engine.estimator;
 
-import org.apache.logging.log4j.Logger;
 import org.apache.spark.sql.SparkSession;
-import org.apache.logging.log4j.LogManager;
+import org.pantherslabs.chimera.unisca.logging.ChimeraLogger;
+import org.pantherslabs.chimera.unisca.logging.ChimeraLoggerFactory;
 
 /*
 
@@ -22,11 +22,11 @@ Implementing E-73
  */
 
 public class FilePartitionEstimator extends ConfEstimator {
-    private final Logger log = LogManager.getLogger(FilePartitionEstimator.class.getName());
+    private static final ChimeraLogger log = ChimeraLoggerFactory.getLogger(FilePartitionEstimator.class);
 
     protected FilePartitionEstimator(SparkSession.Builder ctxBuilder) {
         super(ctxBuilder);
-        log.info(ctxBuilder);
+
     }
 
     @Override
