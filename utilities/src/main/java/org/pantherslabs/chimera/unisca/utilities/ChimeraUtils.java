@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.fasterxml.jackson.core.JsonEncoding;
@@ -14,11 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
 
 public class ChimeraUtils {
 
@@ -114,5 +110,32 @@ public class ChimeraUtils {
     @FunctionalInterface
     public interface JsonGeneratorConsumer {
         void accept(JsonGenerator generator) throws Exception;
+    }
+
+    public static String toCamelCase(String snakeCase) {
+        StringBuilder result = new StringBuilder();
+        boolean nextUpper = false;
+
+        for (char ch : snakeCase.toCharArray()) {
+            if (ch == '_') {
+                nextUpper = true;
+            } else {
+                if (nextUpper) {
+                    result.append(Character.toUpperCase(ch));
+                    nextUpper = false;
+                } else {
+                    result.append(ch);
+                }
+            }
+        }
+        return result.toString();
+    }
+
+    public static Map<String, Object> convertKeysToCamelCase(Map<String, Object> input) {
+        Map<String, Object> result = new LinkedHashMap<>();
+        for (Map.Entry<String, Object> entry : input.entrySet()) {
+            result.put(toCamelCase(entry.getKey()), entry.getValue());
+        }
+        return result;
     }
 }

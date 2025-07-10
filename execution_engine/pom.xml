@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.pantherslabs.chimera</groupId>
+        <artifactId>unisca</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+
+    <name>Tag Module</name>
+    <description>
+        ExecutionEngineManager is responsible for managing the lifecycle,
+        configuration, and initialization of various data processing execution engines
+        such as Apache Spark and Apache Flink.
+
+        It acts as a centralized entry point to abstract away engine-specific setup logic,
+        enabling seamless switching or extension of compute engines based on application
+        configuration or runtime requirements.
+
+        Core responsibilities include:
+        - Creating and configuring execution engine instances (e.g., SparkSession, FlinkEnvironment)
+        - Managing shared resources and settings across engines
+        - Providing a uniform interface for interacting with different engine types
+
+        This abstraction allows application components to remain decoupled from the
+        specifics of the underlying compute engine, promoting modularity and extensibility.
+
+    </description>
+    <url>https://github.com/panthers-labs-pvt-ltd/unisca/tree/main/tags</url>
+    <artifactId>execution_engine</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.pantherslabs.chimera</groupId>
+            <artifactId>unisca.logging</artifactId>
+            <version>${chimera.project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_${spark.scala.version}</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_${spark.scala.version}</artifactId>
+        </dependency>
+    </dependencies>
+</project>
+

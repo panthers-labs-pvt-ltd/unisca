@@ -26,6 +26,7 @@
         <module>api-nexus-security</module>
         <module>api-nexus-swagger-docs</module>
         <module>api-nexus-db</module>
+        <module>api-nexus-client</module>
         <module>api-nexus-examples</module>
     </modules>
 

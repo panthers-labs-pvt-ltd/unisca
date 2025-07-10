@@ -74,6 +74,7 @@
         <module>kvstore</module>
         <module>tags</module>
         <module>api-nexus</module>
+        <module>execution_engine</module>
         <module>data_sources</module>
         <module>pipeline_metadata_api</module>
     </modules>
