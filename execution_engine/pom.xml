@@ -10,7 +10,7 @@
     </parent>
 
 
-    <name>Tag Module</name>
+    <name>ExecutionEngineManager</name>
     <description>
         ExecutionEngineManager is responsible for managing the lifecycle,
         configuration, and initialization of various data processing execution engines
