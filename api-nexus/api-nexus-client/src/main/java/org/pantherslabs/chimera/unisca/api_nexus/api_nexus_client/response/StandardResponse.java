@@ -19,7 +19,8 @@ public class StandardResponse<T> {
     @Getter
     @Setter
     private Instant timestamp;
-    private List<ApiError> errors;
+    @Getter
+    private List<ErrorResponse> errors;
 
     public StandardResponse(boolean status, String message, T data) {
         this.status = status;
@@ -27,7 +28,7 @@ public class StandardResponse<T> {
         this.data = data;
         this.timestamp = Instant.now();
     }
-    public StandardResponse(boolean status, String message, T data, List<ApiError> errors) {
+    public StandardResponse(boolean status, String message, T data, List<ErrorResponse> errors) {
         this.status = status;
         this.message = message;
         this.data = data;
@@ -47,7 +48,7 @@ public class StandardResponse<T> {
         return new StandardResponse<>(true, message, data);
     }
 
-    public static <T> StandardResponse<T> error(String message, List<ApiError> errors) {
+    public static <T> StandardResponse<T> error(String message, List<ErrorResponse> errors) {
         return new StandardResponse<>(false, message, null, errors);
     }
 
