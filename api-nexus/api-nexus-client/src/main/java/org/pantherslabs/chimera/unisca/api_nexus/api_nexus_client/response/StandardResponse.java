@@ -20,6 +20,7 @@ public class StandardResponse<T> {
     @Setter
     private Instant timestamp;
     @Getter
+    @Setter
     private List<ErrorResponse> errors;
 
     public StandardResponse(boolean status, String message, T data) {
