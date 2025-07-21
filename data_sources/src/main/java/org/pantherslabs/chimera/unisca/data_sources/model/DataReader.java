@@ -29,5 +29,9 @@ public interface DataReader {
         Dataset<Row> read(String inSourceType, SparkSession inSparkSession, String inUrl,
                           String inCollectionNm, String inCustomConf) throws Exception;
     }
+
+    interface DuckDb{
+        Dataset<Row> read(String inSourceType, SparkSession inSparkSession, String inUrl, String inTable) throws Exception;
+    }
 }
 
