@@ -4,6 +4,8 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
+import java.util.Map;
+
 public interface DataWriter {
     interface Files {
         Dataset<Row> write(String inSourceType, SparkSession inSparkSession, String inPipelineName, String inDatabaseName,
@@ -26,7 +28,9 @@ public interface DataWriter {
                            String inSortingKeys, String inDuplicationKeys, String inExtraColumns,
                            String inExtraColumnsValues, String inCustomConfig, String inCompressionFormat) throws Exception;    }
 
-
-
+    interface DuckDb{
+        boolean write(String inSourceType,
+                      Dataset<Row> inSourceDataFrame,String inUrl, String inSavingMode, String inTable, Map<String, String> propertiesMap) throws Exception;
+    }
 }
 

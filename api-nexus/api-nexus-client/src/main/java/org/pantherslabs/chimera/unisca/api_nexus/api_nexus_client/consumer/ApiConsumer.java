@@ -71,9 +71,15 @@ public class ApiConsumer {
 
 
         if (statusCode >= 200 && statusCode < 300) {
+            if (responseBody == null || responseBody.trim().isEmpty()) {
+                return new ResponseWrapper<>(null, null, statusCode); // ✅ empty successful response
+            }
             T success = mapper.readValue(responseBody, successTypeReference);
             return new ResponseWrapper<>(success, null, statusCode);
         } else {
+            if (responseBody == null || responseBody.trim().isEmpty()) {
+                return new ResponseWrapper<>(null, null, statusCode); // ✅ empty error body
+            }
             F failure = mapper.readValue(responseBody, failureTypeReference);
             return new ResponseWrapper<>(null, failure, statusCode);
         }
