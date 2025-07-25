@@ -2,6 +2,7 @@ package org.pantherslabs.chimera.unisca.api_nexus.api_nexus_client.dynamic_query
 
 import org.pantherslabs.chimera.unisca.api_nexus.api_nexus_client.dynamic_query.dto.FilterCondition;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class GenericSqlProvider {
@@ -9,12 +10,21 @@ public class GenericSqlProvider {
 
     public String buildQuery(Map<String, Object> params) {
         String table = (String) params.get("table");
+        String SQL = "";
+
+        if (table != null) {
+            String trimmed = table.trim().toLowerCase();
+            if (trimmed.startsWith("select") || trimmed.startsWith("with")) {
+                return table;
+            } else {
+                SQL = String.format("SELECT * FROM %s  WHERE 1=1", table);
+            }
+        }
+
+        StringBuilder sql = new StringBuilder(SQL);
         @SuppressWarnings("unchecked")
         List<FilterCondition> filters =
                 (List<FilterCondition>) params.get("filters");
-
-        StringBuilder sql = new StringBuilder(String.format("SELECT * FROM %s  WHERE 1=1", table));
-
         sql.append(buildWhereClause(filters, "filters", /*nested=*/false));
         return sql.toString();
     }
